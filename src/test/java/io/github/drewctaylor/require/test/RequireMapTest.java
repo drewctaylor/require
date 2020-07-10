@@ -15,7 +15,6 @@ import static io.github.drewctaylor.require.RequireMap.requireSize;
 import static io.github.drewctaylor.require.RequireMap.requireSizeExclusive;
 import static io.github.drewctaylor.require.RequireMap.requireSizeGreaterThan;
 import static io.github.drewctaylor.require.RequireMap.requireSizeGreaterThanOrEqual;
-import static io.github.drewctaylor.require.RequireMap.requireSizeInclusive;
 import static io.github.drewctaylor.require.RequireMap.requireSizeLessThan;
 import static io.github.drewctaylor.require.RequireMap.requireSizeLessThanOrEqual;
 import static io.github.drewctaylor.require.RequireMap.requireSizeMinimumExclusiveMaximumInclusive;
@@ -40,6 +39,9 @@ final class RequireMapTest
         final var valueInvalid = singletonMap(new Object(), new Object());
         final var valueValid = emptyMap();
 
+        assertThrows(NullPointerException.class, () -> requireEmpty(valueValid, null));
+        assertThrows(IllegalArgumentException.class, () -> requireEmpty(valueValid, ""));
+        assertThrows(IllegalArgumentException.class, () -> requireEmpty(valueValid, " "));
         assertThrows(IllegalArgumentException.class, () -> requireEmpty(valueInvalid, "name"));
         assertEquals(valueValid, requireEmpty(valueValid, "name"));
     }
@@ -49,6 +51,9 @@ final class RequireMapTest
     {
         final var valid = singletonMap(new Object(), new Object());
 
+        assertThrows(NullPointerException.class, () -> requireNonEmpty(valid, null));
+        assertThrows(IllegalArgumentException.class, () -> requireNonEmpty(valid, ""));
+        assertThrows(IllegalArgumentException.class, () -> requireNonEmpty(valid, " "));
         assertThrows(IllegalArgumentException.class, () -> requireNonEmpty(emptyMap(), "name"));
         assertEquals(valid, requireNonEmpty(valid, "name"));
     }
@@ -56,6 +61,24 @@ final class RequireMapTest
     private static <KEY, VALUE, MAP extends Map<KEY, VALUE>> void testRequireSizeHelper(
             final List<MAP> list)
     {
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) < 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireSizeLessThan(value, bound, null))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) <= 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireSizeLessThanOrEqual(value, bound, null))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) == 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireSize(value, bound, null))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) >= 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireSizeGreaterThanOrEqual(value, bound, null))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) > 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireSizeGreaterThan(value, bound, null))));
+
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) < 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeLessThan(value, bound, ""))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeLessThanOrEqual(value, bound, ""))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) == 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSize(value, bound, ""))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeGreaterThanOrEqual(value, bound, ""))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeGreaterThan(value, bound, ""))));
+
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) < 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeLessThan(value, bound, " "))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeLessThanOrEqual(value, bound, " "))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) == 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSize(value, bound, " "))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeGreaterThanOrEqual(value, bound, " "))));
+        list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeGreaterThan(value, bound, " "))));
+
         list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) < 0).forEach(value -> assertEquals(value, requireSizeLessThan(value, bound, "name"))));
         list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) <= 0).forEach(value -> assertEquals(value, requireSizeLessThanOrEqual(value, bound, "name"))));
         list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) == 0).forEach(value -> assertEquals(value, requireSize(value, bound, "name"))));
@@ -69,12 +92,12 @@ final class RequireMapTest
         list.stream().map(Map::size).forEach(bound -> list.stream().filter(value -> valueOf(value.size()).compareTo(bound) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeGreaterThan(value, bound, "name"))));
 
         list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) <= 0 || valueOf(value.size()).compareTo(boundMaximum) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeExclusive(value, boundMinimum, boundMaximum, "name")))));
-        list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) < 0 || valueOf(value.size()).compareTo(boundMaximum) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeInclusive(value, boundMinimum, boundMaximum, "name")))));
+        list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) < 0 || valueOf(value.size()).compareTo(boundMaximum) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSize(value, boundMinimum, boundMaximum, "name")))));
         list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) <= 0 || valueOf(value.size()).compareTo(boundMaximum) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeMinimumExclusiveMaximumInclusive(value, boundMinimum, boundMaximum, "name")))));
         list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) < 0 || valueOf(value.size()).compareTo(boundMaximum) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireSizeMinimumInclusiveMaximumExclusive(value, boundMinimum, boundMaximum, "name")))));
 
         list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) > 0 && valueOf(value.size()).compareTo(boundMaximum) < 0).forEach(value -> assertEquals(value, requireSizeExclusive(value, boundMinimum, boundMaximum, "name")))));
-        list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) >= 0 && valueOf(value.size()).compareTo(boundMaximum) <= 0).forEach(value -> assertEquals(value, requireSizeInclusive(value, boundMinimum, boundMaximum, "name")))));
+        list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) >= 0 && valueOf(value.size()).compareTo(boundMaximum) <= 0).forEach(value -> assertEquals(value, requireSize(value, boundMinimum, boundMaximum, "name")))));
         list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) > 0 && valueOf(value.size()).compareTo(boundMaximum) <= 0).forEach(value -> assertEquals(value, requireSizeMinimumExclusiveMaximumInclusive(value, boundMinimum, boundMaximum, "name")))));
         list.stream().map(Map::size).forEach(boundMinimum -> list.stream().map(Map::size).forEach(boundMaximum -> list.stream().filter(value -> valueOf(value.size()).compareTo(boundMinimum) >= 0 && valueOf(value.size()).compareTo(boundMaximum) < 0).forEach(value -> assertEquals(value, requireSizeMinimumInclusiveMaximumExclusive(value, boundMinimum, boundMaximum, "name")))));
     }
@@ -82,7 +105,7 @@ final class RequireMapTest
     @Test
     void testRequireSize()
     {
-        testRequireSizeHelper(range(0, 6).mapToObj(i -> range(0, i + 1).mapToObj(index -> new Object()).collect(toMap(Function.identity(), Function.identity()))).collect(toList()));
+        testRequireSizeHelper(range(0, 6).mapToObj(i -> range(0, i + 1).mapToObj(index -> new Object()).collect(toMap(identity(), identity()))).collect(toList()));
     }
 
     @Test
@@ -90,10 +113,14 @@ final class RequireMapTest
     {
         final Function<Object, Object> failure = object ->
         {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("");
         };
 
         final var map = Map.of(-1, "b", 0, "c", 1, "d");
+
+        assertThrows(NullPointerException.class, () -> requireForAllKey(emptyMap(), failure, null));
+        assertThrows(IllegalArgumentException.class, () -> requireForAllKey(emptyMap(), failure, ""));
+        assertThrows(IllegalArgumentException.class, () -> requireForAllKey(emptyMap(), failure, " "));
 
         assertEquals(emptyMap(), requireForAllKey(emptyMap(), failure, "name"));
         assertEquals(map, requireForAllKey(map, identity(), "name"));
@@ -101,17 +128,29 @@ final class RequireMapTest
         assertThrows(IllegalArgumentException.class, () -> requireForAllKey(map, i -> requireGreaterThan(i, 0, "i"), "name"));
         assertThrows(IllegalArgumentException.class, () -> requireForAllKey(map, i -> requireGreaterThan(i, 1, "i"), "name"));
 
+        assertThrows(NullPointerException.class, () -> requireThereExistsKey(emptyMap(), identity(), null));
+        assertThrows(IllegalArgumentException.class, () -> requireThereExistsKey(emptyMap(), identity(), ""));
+        assertThrows(IllegalArgumentException.class, () -> requireThereExistsKey(emptyMap(), identity(), " "));
+
         assertThrows(IllegalArgumentException.class, () -> requireThereExistsKey(emptyMap(), identity(), "name"));
         assertEquals(map, requireThereExistsKey(map, identity(), "name"));
         assertEquals(map, requireThereExistsKey(map, i -> requireGreaterThan(i, -2, "i"), "name"));
         assertEquals(map, requireThereExistsKey(map, i -> requireGreaterThan(i, 0, "i"), "name"));
         assertThrows(IllegalArgumentException.class, () -> requireThereExistsKey(map, i -> requireGreaterThan(i, 1, "i"), "name"));
 
+        assertThrows(NullPointerException.class, () -> requireForAllValue(emptyMap(), failure, null));
+        assertThrows(IllegalArgumentException.class, () -> requireForAllValue(emptyMap(), failure, ""));
+        assertThrows(IllegalArgumentException.class, () -> requireForAllValue(emptyMap(), failure, " "));
+
         assertEquals(emptyMap(), requireForAllValue(emptyMap(), failure, "name"));
         assertEquals(map, requireForAllValue(map, identity(), "name"));
         assertEquals(map, requireForAllValue(map, s -> requireGreaterThan(s, "a", "s"), "name"));
         assertThrows(IllegalArgumentException.class, () -> requireForAllValue(map, s -> requireGreaterThan(s, "c", "s"), "name"));
         assertThrows(IllegalArgumentException.class, () -> requireForAllValue(map, s -> requireGreaterThan(s, "d", "s"), "name"));
+
+        assertThrows(NullPointerException.class, () -> requireThereExistsValue(emptyMap(), identity(), null));
+        assertThrows(IllegalArgumentException.class, () -> requireThereExistsValue(emptyMap(), identity(), ""));
+        assertThrows(IllegalArgumentException.class, () -> requireThereExistsValue(emptyMap(), identity(), " "));
 
         assertThrows(IllegalArgumentException.class, () -> requireThereExistsValue(emptyMap(), identity(), "name"));
         assertEquals(map, requireThereExistsValue(map, identity(), "name"));

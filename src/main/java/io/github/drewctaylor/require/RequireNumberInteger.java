@@ -1,15 +1,15 @@
-package io.github.drewctaylor.require.number;
+package io.github.drewctaylor.require;
 
 /**
- * Require that a Long is positive, zero, or negative; require that a string represent a Long.
+ * Require that a Integer is positive, zero, or negative; require that a string represent a Integer.
  */
-public final class RequireLong
+public final class RequireNumberInteger
 {
-    private RequireLong()
+    private RequireNumberInteger()
     {
     }
 
-    private static final RequireNumberHelper<Long> requireNumberHelper = new RequireNumberHelper<>(0L, Long::parseLong, "java.lang.Long");
+    private static final RequireNumberHelper<Integer> requireNumberHelper = new RequireNumberHelper<>(0, Integer::parseInt, "java.lang.Integer");
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.
@@ -22,8 +22,8 @@ public final class RequireLong
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Long requirePositive(
-            final Long value,
+    public static Integer requirePositive(
+            final Integer value,
             final String name)
     {
         return requireNumberHelper.requirePositive(value, name);
@@ -40,8 +40,8 @@ public final class RequireLong
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Long requireZeroOrPositive(
-            final Long value,
+    public static Integer requireZeroOrPositive(
+            final Integer value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrPositive(value, name);
@@ -58,8 +58,8 @@ public final class RequireLong
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Long requireZero(
-            final Long value,
+    public static Integer requireZero(
+            final Integer value,
             final String name)
     {
         return requireNumberHelper.requireZero(value, name);
@@ -76,8 +76,8 @@ public final class RequireLong
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Long requireZeroOrNegative(
-            final Long value,
+    public static Integer requireZeroOrNegative(
+            final Integer value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrNegative(value, name);
@@ -94,25 +94,25 @@ public final class RequireLong
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Long requireNegative(
-            final Long value,
+    public static Integer requireNegative(
+            final Integer value,
             final String name)
     {
         return requireNumberHelper.requireNegative(value, name);
     }
 
     /**
-     * Return the given value as a Long, if it represents a Long; otherwise, throw an IllegalArgumentException.
+     * Return the given value as a Integer, if it represents a Integer; otherwise, throw an IllegalArgumentException.
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * @return                          the given value as a Long, if it represents a Long
+     * @return                          the given value as a Integer, if it represents a Integer
      * @throws NullPointerException     if value is null
-     * @throws IllegalArgumentException if value does not represent a Long
+     * @throws IllegalArgumentException if value does not represent a Integer
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Long requireLong(
+    public static Integer requireInteger(
             final String value,
             final String name)
     {

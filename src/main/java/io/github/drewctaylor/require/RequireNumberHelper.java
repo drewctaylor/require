@@ -1,10 +1,10 @@
-package io.github.drewctaylor.require.number;
+package io.github.drewctaylor.require;
 
 import java.util.function.Function;
 
 import static io.github.drewctaylor.require.Require.require;
+import static io.github.drewctaylor.require.Require.requireName;
 import static io.github.drewctaylor.require.Require.requireNonNull;
-import static io.github.drewctaylor.require.RequireString.requireName;
 import static java.lang.String.format;
 
 final class RequireNumberHelper<TYPE extends Comparable<TYPE>>

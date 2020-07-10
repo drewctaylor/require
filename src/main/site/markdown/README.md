@@ -1,73 +1,20 @@
-[![Workflow Maven Package](https://github.com/drewctaylor/require/workflows/workflow-maven-package/badge.svg)](https://github.com/drewctaylor/require/workflows/workflow-maven-package/badge.svg)
-[![Code Coverage](https://codecov.io/gh/drewctaylor/require/branch/master/graph/badge.svg)](https://codecov.io/gh/drewctaylor/require)
+[![Workflow Maven Package](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-package/badge.svg)](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-package/badge.svg)
+[![Code Coverage](https://codecov.io/gh/drewctaylor/${project.artifactId}/branch/master/graph/badge.svg)](https://codecov.io/gh/drewctaylor/${project.artifactId})
 
 # Require
 
-This library provides methods that allow you to require that arguments to a method satisfy requirements; for example, 
-you may require that
-
-* an argument is not null:
-
-  `requireNonNull(null, "parameter")`
-
-* a `String` argument is not blank: 
-
-  `requireNonBlank(" ", "string")`
-
-* a `String` argument matches a given regular expression: 
-
-  `requireMatch("b", "a*", "string")`
-  
-* a `String` argument represents an integer:
- 
-  `requireInteger("1.1", "string")`
-
-* a `String` argument has a length greater than a given length: 
-
-  `requireLengthGreaterThan("", 1, "string")`
-
-* a `String` argument has a length that is within bounds: 
-
-  `requireLengthExclusive("123", 0, 2, "string")`
-
-* a numeric argument is positive:
-
-  `requirePositive(-1, "number")`
-  
-* a `Comparable` argument is greater than a given value:  
-
-  `requireGreaterThan('a', 'b', "letter")`
-  
-* a `Comparable` argument is within bounds:  
-
-  `requireBoundExclusive('d', 'a', 'c',"letter")`
-  
-* a `Collection` argument is not empty:  
-
-  `requireSizeGreaterThan(of(1, 2), 2, "list")`
-
-* a `Collection` argument has a size greater than a given size: 
-
-  `requireForAll(of(1, 2, 3, 4), element -> requireGreaterThan(element, 2, "number"), "list")`
-
-* a `Collection` argument has a size that is within bounds: 
-
-  `requireSizeExclusive(of(1, 2), 0, 1, "list")`
-  
-* a `Collection` argument has elements that satisfy requirements:
-
-  ```
-  requireForAll(of(1, 2, 3, 4), element -> requireGreaterThan(element, 2, "number"), "list");
-  requireThereExists(of(1, 2, 3, 4), element -> requireGreaterThan(element, 4, "number"), "list");
-  ```
-  
-If the argument does not satisfy the requirement, the method throws an informative runtime exception. In the case of
-`requireNonNull`, the runtime exception is a `NullPointerException`; in all other cases, the runtime exception is an 
-`IllegalArgumentException`. Examples of the messages include:
+This library provides methods that allow you to require that arguments to a method satisfy requirements. If the argument 
+does not satisfy the requirement, the method throws an informative runtime exception. In the case of `requireNonNull`, the 
+runtime exception is a `NullPointerException`; in all other cases, the runtime exception is an `IllegalArgumentException`. 
+Examples of the messages include:
 
 * if `requireNonNull(null, "parameter")` fails: 
 
   `parameter must be non-null.`
+
+* if `requireNonEmpty("", "string")` fails: 
+
+  `string must be non-empty.`
 
 * if `requireNonBlank(" ", "string")` fails: 
 
@@ -97,7 +44,7 @@ If the argument does not satisfy the requirement, the method throws an informati
 
   `letter must be greater than 'b'; it is 'a'.`
 
-* if `requireBoundExclusive('d', 'a', 'c',"letter")` fails: 
+* if `requireBoundExclusive('d', 'a', 'c', "letter")` fails: 
 
   `letter must be greater than 'a' and less than 'c'; it is 'd'.`
 
@@ -130,7 +77,7 @@ If the argument does not satisfy the requirement, the method throws an informati
   2: number must be greater than '4'; it is '3'.
   3: number must be greater than '4'; it is '4'.
   ```
-  
+    
 ## To Use Require
 
 To use require:
@@ -156,13 +103,13 @@ To use require:
     For example:
 
     ```xml
-    <pluginRepositories>
-        <pluginRepository>
-            <id>github</id>
+    <repositories>
+        <repository>
+            <id>${project.artifactId}</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/drewctaylor/require</url>
-        </pluginRepository>
-    </pluginRepositories>
+            <url>https://maven.pkg.github.com/drewctaylor/${project.artifactId}</url>
+        </repository>
+    </repositories>
     ```
 
 3) Update your `pom.xml` to include the plugin. 
@@ -172,8 +119,8 @@ To use require:
     ```xml
     <dependencies>
         <dependency>
-            <groupId>io.github.drewctaylor</groupId>
-            <artifactId>require</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${project.artifactId}</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

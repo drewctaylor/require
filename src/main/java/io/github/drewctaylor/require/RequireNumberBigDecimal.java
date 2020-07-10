@@ -1,15 +1,17 @@
-package io.github.drewctaylor.require.number;
+package io.github.drewctaylor.require;
+
+import java.math.BigDecimal;
 
 /**
- * Require that a Byte is positive, zero, or negative; require that a string represent a Byte.
+ * Require that a BigDecimal is positive, zero, or negative; require that a string represent a BigDecimal.
  */
-public final class RequireByte
+public final class RequireNumberBigDecimal
 {
-    private RequireByte()
+    private RequireNumberBigDecimal()
     {
     }
 
-    private static final RequireNumberHelper<Byte> requireNumberHelper = new RequireNumberHelper<>((byte) 0, Byte::parseByte, "java.lang.Byte");
+    private static final RequireNumberHelper<BigDecimal> requireNumberHelper = new RequireNumberHelper<>(BigDecimal.ZERO, BigDecimal::new, "java.math.BigDecimal");
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.
@@ -22,8 +24,8 @@ public final class RequireByte
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Byte requirePositive(
-            final Byte value,
+    public static BigDecimal requirePositive(
+            final BigDecimal value,
             final String name)
     {
         return requireNumberHelper.requirePositive(value, name);
@@ -40,8 +42,8 @@ public final class RequireByte
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Byte requireZeroOrPositive(
-            final Byte value,
+    public static BigDecimal requireZeroOrPositive(
+            final BigDecimal value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrPositive(value, name);
@@ -58,8 +60,8 @@ public final class RequireByte
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Byte requireZero(
-            final Byte value,
+    public static BigDecimal requireZero(
+            final BigDecimal value,
             final String name)
     {
         return requireNumberHelper.requireZero(value, name);
@@ -76,8 +78,8 @@ public final class RequireByte
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Byte requireZeroOrNegative(
-            final Byte value,
+    public static BigDecimal requireZeroOrNegative(
+            final BigDecimal value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrNegative(value, name);
@@ -94,25 +96,25 @@ public final class RequireByte
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Byte requireNegative(
-            final Byte value,
+    public static BigDecimal requireNegative(
+            final BigDecimal value,
             final String name)
     {
         return requireNumberHelper.requireNegative(value, name);
     }
 
     /**
-     * Return the given value as a Byte, if it represents a Byte; otherwise, throw an IllegalArgumentException.
+     * Return the given value as a BigDecimal, if it represents a BigDecimal; otherwise, throw an IllegalArgumentException.
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * @return                          the given value as a Byte, if it represents a Byte
+     * @return                          the given value as a BigDecimal, if it represents a BigDecimal
      * @throws NullPointerException     if value is null
-     * @throws IllegalArgumentException if value does not represent a Byte
+     * @throws IllegalArgumentException if value does not represent a BigDecimal
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Byte requireByte(
+    public static BigDecimal requireBigDecimal(
             final String value,
             final String name)
     {

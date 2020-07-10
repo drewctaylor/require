@@ -1,17 +1,15 @@
-package io.github.drewctaylor.require.number;
-
-import java.math.BigInteger;
+package io.github.drewctaylor.require;
 
 /**
- * Require that a BigInteger is positive, zero, or negative; require that a string represent a BigInteger.
+ * Require that a short is positive, zero, or negative; require that a string represent a Short.
  */
-public final class RequireBigInteger
+public final class RequireNumberShort
 {
-    private RequireBigInteger()
+    private RequireNumberShort()
     {
     }
 
-    private static final RequireNumberHelper<BigInteger> requireNumberHelper = new RequireNumberHelper<>(BigInteger.ZERO, BigInteger::new, "java.math.BigInteger");
+    private static final RequireNumberHelper<Short> requireNumberHelper = new RequireNumberHelper<>((short) 0, Short::parseShort, "java.lang.Short");
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.
@@ -24,8 +22,8 @@ public final class RequireBigInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigInteger requirePositive(
-            final BigInteger value,
+    public static Short requirePositive(
+            final Short value,
             final String name)
     {
         return requireNumberHelper.requirePositive(value, name);
@@ -42,8 +40,8 @@ public final class RequireBigInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigInteger requireZeroOrPositive(
-            final BigInteger value,
+    public static Short requireZeroOrPositive(
+            final Short value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrPositive(value, name);
@@ -60,8 +58,8 @@ public final class RequireBigInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigInteger requireZero(
-            final BigInteger value,
+    public static Short requireZero(
+            final Short value,
             final String name)
     {
         return requireNumberHelper.requireZero(value, name);
@@ -78,8 +76,8 @@ public final class RequireBigInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigInteger requireZeroOrNegative(
-            final BigInteger value,
+    public static Short requireZeroOrNegative(
+            final Short value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrNegative(value, name);
@@ -96,25 +94,25 @@ public final class RequireBigInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigInteger requireNegative(
-            final BigInteger value,
+    public static Short requireNegative(
+            final Short value,
             final String name)
     {
         return requireNumberHelper.requireNegative(value, name);
     }
 
     /**
-     * Return the given value as a BigInteger, if it represents a BigInteger; otherwise, throw an IllegalArgumentException.
+     * Return the given value as a Short, if it represents a Short; otherwise, throw an IllegalArgumentException.
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * @return                          the given value as a BigInteger, if it represents a BigInteger
+     * @return                          the given value as a Short, if it represents a Short
      * @throws NullPointerException     if value is null
-     * @throws IllegalArgumentException if value does not represent a BigInteger
+     * @throws IllegalArgumentException if value does not represent a Short
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigInteger requireBigInteger(
+    public static Short requireShort(
             final String value,
             final String name)
     {

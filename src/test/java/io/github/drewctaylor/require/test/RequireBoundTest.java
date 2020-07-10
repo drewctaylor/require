@@ -28,6 +28,24 @@ final class RequireBoundTest
     private static <TYPE extends Comparable<TYPE>> void testRequireBoundHelper(
             final List<TYPE> list)
     {
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) < 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireLessThan(value, bound, null))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) <= 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireLessThanOrEqual(value, bound, null))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) == 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireEqual(value, bound, null))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) >= 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireGreaterThanOrEqual(value, bound, null))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) > 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireGreaterThan(value, bound, null))));
+
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) < 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThan(value, bound, ""))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThanOrEqual(value, bound, ""))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) == 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireEqual(value, bound, ""))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThanOrEqual(value, bound, ""))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThan(value, bound, ""))));
+
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) < 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThan(value, bound, " "))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThanOrEqual(value, bound, " "))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) == 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireEqual(value, bound, " "))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThanOrEqual(value, bound, " "))));
+        list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThan(value, bound, " "))));
+
         list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) < 0).forEach(value -> assertEquals(value, requireLessThan(value, bound, "name"))));
         list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) <= 0).forEach(value -> assertEquals(value, requireLessThanOrEqual(value, bound, "name"))));
         list.stream().forEach(bound -> list.stream().filter(value -> value.compareTo(bound) == 0).forEach(value -> assertEquals(value, requireEqual(value, bound, "name"))));
@@ -55,6 +73,42 @@ final class RequireBoundTest
             final List<T1> list,
             final Function<T1, T2> get)
     {
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) < 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireLessThan(value, get, get.apply(bound), null, "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) <= 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireLessThanOrEqual(value, get, get.apply(bound), null, "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) == 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireEqual(value, get, get.apply(bound), null, "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) >= 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireGreaterThanOrEqual(value, get, get.apply(bound), null, "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) > 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireGreaterThan(value, get, get.apply(bound), null, "fieldName"))));
+
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) < 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThan(value, get, get.apply(bound), "", "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThanOrEqual(value, get, get.apply(bound), "", "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) == 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireEqual(value, get, get.apply(bound), "", "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThanOrEqual(value, get, get.apply(bound), "", "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThan(value, get, get.apply(bound), "", "fieldName"))));
+
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) < 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThan(value, get, get.apply(bound), " ", "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThanOrEqual(value, get, get.apply(bound), " ", "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) == 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireEqual(value, get, get.apply(bound), " ", "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThanOrEqual(value, get, get.apply(bound), " ", "fieldName"))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThan(value, get, get.apply(bound), " ", "fieldName"))));
+
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) < 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireLessThan(value, get, get.apply(bound), "paramterName", null))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) <= 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireLessThanOrEqual(value, get, get.apply(bound), "paramterName", null))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) == 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireEqual(value, get, get.apply(bound), "paramterName", null))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) >= 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireGreaterThanOrEqual(value, get, get.apply(bound), "paramterName", null))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) > 0).forEach(value -> assertThrows(NullPointerException.class, () -> requireGreaterThan(value, get, get.apply(bound), "paramterName", null))));
+
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) < 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThan(value, get, get.apply(bound), "paramterName", ""))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThanOrEqual(value, get, get.apply(bound), "paramterName", ""))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) == 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireEqual(value, get, get.apply(bound), "paramterName", ""))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThanOrEqual(value, get, get.apply(bound), "paramterName", ""))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThan(value, get, get.apply(bound), "paramterName", " "))));
+
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) < 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThan(value, get, get.apply(bound), "paramterName", " "))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) <= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireLessThanOrEqual(value, get, get.apply(bound), "paramterName", " "))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) == 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireEqual(value, get, get.apply(bound), "paramterName", " "))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) >= 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThanOrEqual(value, get, get.apply(bound), "paramterName", " "))));
+        list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) > 0).forEach(value -> assertThrows(IllegalArgumentException.class, () -> requireGreaterThan(value, get, get.apply(bound), "paramterName", " "))));
+
         list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) < 0).forEach(value -> assertEquals(value, requireLessThan(value, get, get.apply(bound), "paramterName", "fieldName"))));
         list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) <= 0).forEach(value -> assertEquals(value, requireLessThanOrEqual(value, get, get.apply(bound), "paramterName", "fieldName"))));
         list.stream().forEach(bound -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(bound)) == 0).forEach(value -> assertEquals(value, requireEqual(value, get, get.apply(bound), "paramterName", "fieldName"))));
@@ -78,31 +132,32 @@ final class RequireBoundTest
         list.stream().forEach(boundMinimum -> list.stream().forEach(boundMaximum -> list.stream().filter(value -> get.apply(value).compareTo(get.apply(boundMinimum)) >= 0 && get.apply(value).compareTo(get.apply(boundMaximum)) < 0).forEach(value -> assertEquals(value, requireBoundMinimumInclusiveMaximumExclusive(value, get, get.apply(boundMinimum), get.apply(boundMaximum), "parmaeterName", "fieldName")))));
     }
 
+    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireBound()
     {
-        testRequireBoundHelper(iterate(-5L, l -> l + 1).limit(11).map(BigDecimal::valueOf).collect(toList()));
-        testRequireBoundHelper(iterate(-5L, l -> l + 1).limit(11).map(BigInteger::valueOf).collect(toList()));
-        testRequireBoundHelper(iterate((byte) -5, b -> (byte) (b + 1)).limit(11).collect(toList()));
-        testRequireBoundHelper(iterate(-5.0, d -> d + 1).limit(11).collect(toList()));
-        testRequireBoundHelper(iterate(-5.0f, f -> f + 1).limit(11).collect(toList()));
-        testRequireBoundHelper(iterate(-5, i -> i + 1).limit(11).collect(toList()));
-        testRequireBoundHelper(iterate(-5L, l -> l + 1).limit(11).collect(toList()));
-        testRequireBoundHelper(iterate((short) -5, sh -> (short) (sh + 1)).limit(11).collect(toList()));
-        testRequireBoundHelper(iterate((short) -5, sh -> (short) (sh + 1)).limit(11).collect(toList()));
-        testRequireBoundHelper(iterate((int) 'a', i -> i + 1).limit(11).map(i -> (char) (int) i).collect(toList()));
-        testRequireBoundHelper(iterate((int) 'a', i -> i + 1).limit(11).map(i -> valueOf((char) (int) i)).collect(toList()));
+        testRequireBoundHelper(iterate(-5L, l -> l + 1L).limit(11L).map(BigDecimal::valueOf).collect(toList()));
+        testRequireBoundHelper(iterate(-5L, l -> l + 1L).limit(11L).map(BigInteger::valueOf).collect(toList()));
+        testRequireBoundHelper(iterate((byte) -5, b -> (byte) (b + 1)).limit(11L).collect(toList()));
+        testRequireBoundHelper(iterate(-5.0, d -> d + 1.0).limit(11L).collect(toList()));
+        testRequireBoundHelper(iterate(-5.0f, f -> f + 1.0F).limit(11L).collect(toList()));
+        testRequireBoundHelper(iterate(-5, i -> i + 1).limit(11L).collect(toList()));
+        testRequireBoundHelper(iterate(-5L, l -> l + 1L).limit(11L).collect(toList()));
+        testRequireBoundHelper(iterate((short) -5, sh -> (short) (sh + 1)).limit(11L).collect(toList()));
+        testRequireBoundHelper(iterate((short) -5, sh -> (short) (sh + 1)).limit(11L).collect(toList()));
+        testRequireBoundHelper(iterate((int) 'a', i -> i + 1).limit(11L).map(i -> (char) (int) i).collect(toList()));
+        testRequireBoundHelper(iterate((int) 'a', i -> i + 1).limit(11L).map(i -> valueOf((char) (int) i)).collect(toList()));
 
-        testRequireBoundHelper(iterate(-5L, l -> l + 1).limit(11).map(BigDecimal::valueOf).collect(toList()), identity());
-        testRequireBoundHelper(iterate(-5L, l -> l + 1).limit(11).map(BigInteger::valueOf).collect(toList()), identity());
-        testRequireBoundHelper(iterate((byte) -5, b -> (byte) (b + 1)).limit(11).collect(toList()), identity());
-        testRequireBoundHelper(iterate(-5.0, d -> d + 1).limit(11).collect(toList()), identity());
-        testRequireBoundHelper(iterate(-5.0f, f -> f + 1).limit(11).collect(toList()), identity());
-        testRequireBoundHelper(iterate(-5, i -> i + 1).limit(11).collect(toList()), identity());
-        testRequireBoundHelper(iterate(-5L, l -> l + 1).limit(11).collect(toList()), identity());
-        testRequireBoundHelper(iterate((short) -5, sh -> (short) (sh + 1)).limit(11).collect(toList()), identity());
-        testRequireBoundHelper(iterate((short) -5, sh -> (short) (sh + 1)).limit(11).collect(toList()), identity());
-        testRequireBoundHelper(iterate((int) 'a', i -> i + 1).limit(11).map(i -> (char) (int) i).collect(toList()), identity());
-        testRequireBoundHelper(iterate((int) 'a', i -> i + 1).limit(11).map(i -> valueOf((char) (int) i)).collect(toList()), identity());
+        testRequireBoundHelper(iterate(-5L, l -> l + 1L).limit(11L).map(BigDecimal::valueOf).collect(toList()), identity());
+        testRequireBoundHelper(iterate(-5L, l -> l + 1L).limit(11L).map(BigInteger::valueOf).collect(toList()), identity());
+        testRequireBoundHelper(iterate((byte) -5, b -> (byte) (b + 1)).limit(11L).collect(toList()), identity());
+        testRequireBoundHelper(iterate(-5.0, d -> d + 1.0).limit(11L).collect(toList()), identity());
+        testRequireBoundHelper(iterate(-5.0f, f -> f + 1.0F).limit(11L).collect(toList()), identity());
+        testRequireBoundHelper(iterate(-5, i -> i + 1).limit(11L).collect(toList()), identity());
+        testRequireBoundHelper(iterate(-5L, l -> l + 1L).limit(11L).collect(toList()), identity());
+        testRequireBoundHelper(iterate((short) -5, sh -> (short) (sh + 1)).limit(11L).collect(toList()), identity());
+        testRequireBoundHelper(iterate((short) -5, sh -> (short) (sh + 1)).limit(11L).collect(toList()), identity());
+        testRequireBoundHelper(iterate((int) 'a', i -> i + 1).limit(11L).map(i -> (char) (int) i).collect(toList()), identity());
+        testRequireBoundHelper(iterate((int) 'a', i -> i + 1).limit(11L).map(i -> valueOf((char) (int) i)).collect(toList()), identity());
     }
 }

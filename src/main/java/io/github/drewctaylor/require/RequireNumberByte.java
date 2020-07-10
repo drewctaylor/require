@@ -1,15 +1,15 @@
-package io.github.drewctaylor.require.number;
+package io.github.drewctaylor.require;
 
 /**
- * Require that a Integer is positive, zero, or negative; require that a string represent a Integer.
+ * Require that a Byte is positive, zero, or negative; require that a string represent a Byte.
  */
-public final class RequireInteger
+public final class RequireNumberByte
 {
-    private RequireInteger()
+    private RequireNumberByte()
     {
     }
 
-    private static final RequireNumberHelper<Integer> requireNumberHelper = new RequireNumberHelper<>(0, Integer::parseInt, "java.lang.Integer");
+    private static final RequireNumberHelper<Byte> requireNumberHelper = new RequireNumberHelper<>((byte) 0, Byte::parseByte, "java.lang.Byte");
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.
@@ -22,8 +22,8 @@ public final class RequireInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Integer requirePositive(
-            final Integer value,
+    public static Byte requirePositive(
+            final Byte value,
             final String name)
     {
         return requireNumberHelper.requirePositive(value, name);
@@ -40,8 +40,8 @@ public final class RequireInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Integer requireZeroOrPositive(
-            final Integer value,
+    public static Byte requireZeroOrPositive(
+            final Byte value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrPositive(value, name);
@@ -58,8 +58,8 @@ public final class RequireInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Integer requireZero(
-            final Integer value,
+    public static Byte requireZero(
+            final Byte value,
             final String name)
     {
         return requireNumberHelper.requireZero(value, name);
@@ -76,8 +76,8 @@ public final class RequireInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Integer requireZeroOrNegative(
-            final Integer value,
+    public static Byte requireZeroOrNegative(
+            final Byte value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrNegative(value, name);
@@ -94,25 +94,25 @@ public final class RequireInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Integer requireNegative(
-            final Integer value,
+    public static Byte requireNegative(
+            final Byte value,
             final String name)
     {
         return requireNumberHelper.requireNegative(value, name);
     }
 
     /**
-     * Return the given value as a Integer, if it represents a Integer; otherwise, throw an IllegalArgumentException.
+     * Return the given value as a Byte, if it represents a Byte; otherwise, throw an IllegalArgumentException.
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * @return                          the given value as a Integer, if it represents a Integer
+     * @return                          the given value as a Byte, if it represents a Byte
      * @throws NullPointerException     if value is null
-     * @throws IllegalArgumentException if value does not represent a Integer
+     * @throws IllegalArgumentException if value does not represent a Byte
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Integer requireInteger(
+    public static Byte requireByte(
             final String value,
             final String name)
     {

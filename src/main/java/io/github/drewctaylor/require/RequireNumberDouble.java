@@ -1,15 +1,15 @@
-package io.github.drewctaylor.require.number;
+package io.github.drewctaylor.require;
 
 /**
- * Require that a Float is positive, zero, or negative; require that a string represent a Float.
+ * Require that a Double is positive, zero, or negative; require that a string represent a Double.
  */
-public final class RequireFloat
+public final class RequireNumberDouble
 {
-    private RequireFloat()
+    private RequireNumberDouble()
     {
     }
 
-    private static final RequireNumberHelper<Float> requireNumberHelper = new RequireNumberHelper<>(0.0f, Float::parseFloat, "java.lang.Float");
+    private static final RequireNumberHelper<Double> requireNumberHelper = new RequireNumberHelper<>(0.0d, Double::parseDouble, "java.lang.Double");
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.
@@ -22,8 +22,8 @@ public final class RequireFloat
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Float requirePositive(
-            final Float value,
+    public static Double requirePositive(
+            final Double value,
             final String name)
     {
         return requireNumberHelper.requirePositive(value, name);
@@ -40,8 +40,8 @@ public final class RequireFloat
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Float requireZeroOrPositive(
-            final Float value,
+    public static Double requireZeroOrPositive(
+            final Double value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrPositive(value, name);
@@ -58,8 +58,8 @@ public final class RequireFloat
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Float requireZero(
-            final Float value,
+    public static Double requireZero(
+            final Double value,
             final String name)
     {
         return requireNumberHelper.requireZero(value, name);
@@ -76,8 +76,8 @@ public final class RequireFloat
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Float requireZeroOrNegative(
-            final Float value,
+    public static Double requireZeroOrNegative(
+            final Double value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrNegative(value, name);
@@ -94,25 +94,25 @@ public final class RequireFloat
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Float requireNegative(
-            final Float value,
+    public static Double requireNegative(
+            final Double value,
             final String name)
     {
         return requireNumberHelper.requireNegative(value, name);
     }
 
     /**
-     * Return the given value as a Float, if it represents a Float; otherwise, throw an IllegalArgumentException.
+     * Return the given value, as a Double, if it represents a Double; otherwise, throw an IllegalArgumentException.
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * @return                          the given value as a Float, if it represents a Float
+     * @return                          the given value as a Double, if it represents a Double
      * @throws NullPointerException     if value is null
-     * @throws IllegalArgumentException if value does not represent a Float
+     * @throws IllegalArgumentException if value does not represent a Double
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static Float requireFloat(
+    public static Double requireDouble(
             final String value,
             final String name)
     {

@@ -1,17 +1,17 @@
-package io.github.drewctaylor.require.number;
+package io.github.drewctaylor.require;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
- * Require that a BigDecimal is positive, zero, or negative; require that a string represent a BigDecimal.
+ * Require that a BigInteger is positive, zero, or negative; require that a string represent a BigInteger.
  */
-public final class RequireBigDecimal
+public final class RequireNumberBigInteger
 {
-    private RequireBigDecimal()
+    private RequireNumberBigInteger()
     {
     }
 
-    private static final RequireNumberHelper<BigDecimal> requireNumberHelper = new RequireNumberHelper<>(BigDecimal.ZERO, BigDecimal::new, "java.math.BigDecimal");
+    private static final RequireNumberHelper<BigInteger> requireNumberHelper = new RequireNumberHelper<>(BigInteger.ZERO, BigInteger::new, "java.math.BigInteger");
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.
@@ -24,8 +24,8 @@ public final class RequireBigDecimal
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigDecimal requirePositive(
-            final BigDecimal value,
+    public static BigInteger requirePositive(
+            final BigInteger value,
             final String name)
     {
         return requireNumberHelper.requirePositive(value, name);
@@ -42,8 +42,8 @@ public final class RequireBigDecimal
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigDecimal requireZeroOrPositive(
-            final BigDecimal value,
+    public static BigInteger requireZeroOrPositive(
+            final BigInteger value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrPositive(value, name);
@@ -60,8 +60,8 @@ public final class RequireBigDecimal
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigDecimal requireZero(
-            final BigDecimal value,
+    public static BigInteger requireZero(
+            final BigInteger value,
             final String name)
     {
         return requireNumberHelper.requireZero(value, name);
@@ -78,8 +78,8 @@ public final class RequireBigDecimal
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigDecimal requireZeroOrNegative(
-            final BigDecimal value,
+    public static BigInteger requireZeroOrNegative(
+            final BigInteger value,
             final String name)
     {
         return requireNumberHelper.requireZeroOrNegative(value, name);
@@ -96,25 +96,25 @@ public final class RequireBigDecimal
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigDecimal requireNegative(
-            final BigDecimal value,
+    public static BigInteger requireNegative(
+            final BigInteger value,
             final String name)
     {
         return requireNumberHelper.requireNegative(value, name);
     }
 
     /**
-     * Return the given value as a BigDecimal, if it represents a BigDecimal; otherwise, throw an IllegalArgumentException.
+     * Return the given value as a BigInteger, if it represents a BigInteger; otherwise, throw an IllegalArgumentException.
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * @return                          the given value as a BigDecimal, if it represents a BigDecimal
+     * @return                          the given value as a BigInteger, if it represents a BigInteger
      * @throws NullPointerException     if value is null
-     * @throws IllegalArgumentException if value does not represent a BigDecimal
+     * @throws IllegalArgumentException if value does not represent a BigInteger
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
-    public static BigDecimal requireBigDecimal(
+    public static BigInteger requireBigInteger(
             final String value,
             final String name)
     {

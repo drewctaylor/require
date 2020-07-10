@@ -1,7 +1,5 @@
 package io.github.drewctaylor.require;
 
-import static io.github.drewctaylor.require.RequireString.requireName;
-import static io.github.drewctaylor.require.RequireString.requireNonBlank;
 import static java.lang.String.format;
 
 /**
@@ -26,19 +24,25 @@ public final class Require
         return value;
     }
 
-    static <TYPE> TYPE requireHelper(
-            final boolean expression,
-            final TYPE value,
-            final String message)
-    {
-        return require(expression, value, new IllegalArgumentException(message));
-    }
-
-    static <TYPE> TYPE requireNonNullHelper(
+    private static <TYPE> TYPE requireNonNullHelper(
             final TYPE value,
             final String name)
     {
         return requireHelper(value != null, value, new NullPointerException(format("%s must be non-null.", name)));
+    }
+
+    static String requireNonBlankHelper(
+            final String string,
+            final String name)
+    {
+        return require(!string.isBlank(), string, new IllegalArgumentException(format("%s must be non-blank; it is '%s'.", name, string)));
+    }
+
+    static void requireName(
+            final String name)
+    {
+        requireNonNullHelper(name, "name");
+        requireNonBlankHelper(name, "name");
     }
 
     /**
@@ -51,7 +55,7 @@ public final class Require
      * @param  <EXCEPTION>          the type of the given runtime exception
      * @return                      the given value, if the given expression is true
      * @throws EXCEPTION            if expression is false
-     * @throws NullPointerException if exception is null
+     * @throws NullPointerException if runtimeException is null
      */
     public static <TYPE, EXCEPTION extends RuntimeException> TYPE require(
             final boolean expression,
@@ -81,7 +85,7 @@ public final class Require
             final TYPE value,
             final String message)
     {
-        requireNonBlank(message, "message");
+        requireNonBlankHelper(message, "message");
 
         return require(expression, value, new IllegalArgumentException(message));
     }
@@ -93,7 +97,7 @@ public final class Require
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
      * @return                          the given value, if non-null
-     * @throws IllegalArgumentException if value is null
+     * @throws NullPointerException     if value is null
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
      */
@@ -125,5 +129,4 @@ public final class Require
 
         return require(value == null, value, format("%s must be null; it is '%s'.", name, value));
     }
-
 }
