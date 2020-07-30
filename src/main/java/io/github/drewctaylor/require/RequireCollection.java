@@ -52,7 +52,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if empty
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection is not empty
      * @throws NullPointerException     if name is null
@@ -75,7 +77,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if non-empty
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection is not empty
      * @throws NullPointerException     if name is null
@@ -99,7 +103,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size less than the given maximum
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not less than the given maximum
      * @throws IllegalArgumentException if maximum is not zero or positive
@@ -127,7 +133,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size is less than or equal to the given maximum
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not less than or equal to the given maximum
      * @throws IllegalArgumentException if maximum is not zero or positive
@@ -154,7 +162,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size is the given size
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not the given size
      * @throws IllegalArgumentException if size is not zero or positive
@@ -182,7 +192,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size is greater than or equal to the given minimum
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not greater than or equal to the given minimum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -209,7 +221,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size is greater than the given minimum
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not greater than the given minimum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -238,7 +252,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size is between the given minimum and the given maximum
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -270,7 +286,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size is between the given minimum and the given maximum
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -302,7 +320,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size is between the given minimum and the given maximum
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -334,7 +354,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if size is between the given minimum and the given maximum
+     * 
      * @throws NullPointerException     if collection is null
      * @throws IllegalArgumentException if collection size is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -438,7 +460,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if all elements meet the given requirement.
+     * 
      * @throws NullPointerException     if collection is null
      * @throws NullPointerException     if require is null
      * @throws NullPointerException     if name is null
@@ -467,7 +491,9 @@ public final class RequireCollection
      * @param  <T1>                     the type of the collection
      * @param  <T2>                     the type of the derivative collection element
      * @param  <COLLECTION>             the type of the derivative collection
+     * 
      * @return                          the given collection, if all elements meet the given requirement.
+     * 
      * @throws NullPointerException     if collection is null
      * @throws NullPointerException     if get is null
      * @throws NullPointerException     if require is null
@@ -507,7 +533,9 @@ public final class RequireCollection
      * @param  name                     the name of the given collection
      * @param  <TYPE>                   the type of the collection element
      * @param  <COLLECTION>             the type of the collection
+     * 
      * @return                          the given collection, if at least one element meets the given requirement.
+     * 
      * @throws NullPointerException     if collection is null
      * @throws NullPointerException     if require is null
      * @throws NullPointerException     if name is null
@@ -536,7 +564,9 @@ public final class RequireCollection
      * @param  <T1>                     the type of the collection
      * @param  <T2>                     the type of the derivative collection element
      * @param  <COLLECTION>             the type of the derivative collection
+     * 
      * @return                          the given collection, if at least one element meets the given requirement.
+     * 
      * @throws NullPointerException     if collection is null
      * @throws NullPointerException     if get is null
      * @throws NullPointerException     if require is null

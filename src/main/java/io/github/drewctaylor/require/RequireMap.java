@@ -38,7 +38,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if empty
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map is not empty
      * @throws NullPointerException     if name is null
@@ -63,7 +65,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if non-empty
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map is not empty
      * @throws NullPointerException     if name is null
@@ -89,7 +93,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size less than the given maximum
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not less than the given maximum
      * @throws IllegalArgumentException if maximum is not zero or positive
@@ -118,7 +124,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size is less than or equal to the given maximum
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not less than or equal to the given maximum
      * @throws IllegalArgumentException if maximum is not zero or positive
@@ -146,7 +154,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size is the given size
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not the given size
      * @throws IllegalArgumentException if size is not zero or positive
@@ -175,7 +185,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size is greater than or equal to the given size
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not greater than or equal to the given size
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -203,7 +215,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size is greater than the given size
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not greater than the given size
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -233,7 +247,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size is between the given minimum and the given maximum
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -266,7 +282,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size is between the given minimum and the given maximum
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -299,7 +317,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size is between the given minimum and the given maximum
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -332,7 +352,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if size is between the given minimum and the given maximum
+     * 
      * @throws NullPointerException     if map is null
      * @throws IllegalArgumentException if map size is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -363,7 +385,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if all keys meet the given requirement.
+     * 
      * @throws NullPointerException     if map is null
      * @throws NullPointerException     if require is null
      * @throws NullPointerException     if name is null
@@ -390,7 +414,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if at least one key meets the given requirement.
+     * 
      * @throws NullPointerException     if map is null
      * @throws NullPointerException     if require is null
      * @throws NullPointerException     if name is null
@@ -417,7 +443,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if all values meet the given requirement.
+     * 
      * @throws NullPointerException     if map is null
      * @throws NullPointerException     if require is null
      * @throws NullPointerException     if name is null
@@ -444,7 +472,9 @@ public final class RequireMap
      * @param  <KEY>                    the type of map key
      * @param  <VALUE>                  the type of the map value
      * @param  <MAP>                    the type of the map
+     * 
      * @return                          the given map, if at least one value meets the given requirement.
+     * 
      * @throws NullPointerException     if map is null
      * @throws NullPointerException     if require is null
      * @throws NullPointerException     if name is null

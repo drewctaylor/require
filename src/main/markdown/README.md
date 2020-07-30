@@ -1,10 +1,11 @@
 [![Workflow Maven Package](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-package/badge.svg)](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-package/badge.svg)
+[![Workflow Maven Deploy](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-deploy/badge.svg)](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-deploy/badge.svg)
 [![Code Coverage](https://codecov.io/gh/drewctaylor/${project.artifactId}/branch/master/graph/badge.svg)](https://codecov.io/gh/drewctaylor/${project.artifactId})
 
 # Require
 
-This library provides methods that allow you to require that arguments to a method satisfy requirements. If the argument 
-does not satisfy the requirement, the method throws an informative runtime exception. In the case of `requireNonNull`, the 
+This library provides methods that allow you to ensure that arguments to a method satisfy requirements. If an argument 
+does not satisfy a requirement, the method throws an informative runtime exception. In the case of `requireNonNull`, the 
 runtime exception is a `NullPointerException`; in all other cases, the runtime exception is an `IllegalArgumentException`. 
 Examples of the messages include:
 
@@ -90,7 +91,7 @@ To use require:
     <settings>
         <servers>
             <server>
-                <id>github</id>
+                <id>${project.artifactId}</id>
                 <username>your-github-username-or-email-address</username>
                 <password>your-github-personal-access-token</password>
             </server>
