@@ -53,9 +53,7 @@ public final class Require
      * @param  runtimeException     the given runtime exception
      * @param  <TYPE>               the type of the given value
      * @param  <EXCEPTION>          the type of the given runtime exception
-     * 
      * @return                      the given value, if the given expression is true
-     * 
      * @throws EXCEPTION            if expression is false
      * @throws NullPointerException if runtimeException is null
      */
@@ -77,9 +75,7 @@ public final class Require
      * @param  value                    the given value
      * @param  message                  the given message
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if the given expression is true
-     * 
      * @throws IllegalArgumentException if expression is false
      * @throws NullPointerException     if message is null
      * @throws IllegalArgumentException if message is blank
@@ -100,9 +96,7 @@ public final class Require
      * @param  value                    the given value
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if non-null
-     * 
      * @throws NullPointerException     if value is null
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank
@@ -122,9 +116,7 @@ public final class Require
      * @param  value                    the given value
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if null
-     * 
      * @throws IllegalArgumentException if value is not null
      * @throws NullPointerException     if name is null
      * @throws IllegalArgumentException if name is blank

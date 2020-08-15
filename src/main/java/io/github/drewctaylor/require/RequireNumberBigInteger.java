@@ -18,9 +18,7 @@ public final class RequireNumberBigInteger
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * 
      * @return                          the given value if positive
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value is not positive
      * @throws NullPointerException     if name is null
@@ -38,9 +36,7 @@ public final class RequireNumberBigInteger
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * 
      * @return                          the given value if zero or positive
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value is not zero or not positive
      * @throws NullPointerException     if name is null
@@ -58,9 +54,7 @@ public final class RequireNumberBigInteger
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * 
      * @return                          the given value if zero
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value is not zero
      * @throws NullPointerException     if name is null
@@ -78,9 +72,7 @@ public final class RequireNumberBigInteger
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * 
      * @return                          the given value if zero or negative
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value is not zero or not negative
      * @throws NullPointerException     if name is null
@@ -98,9 +90,7 @@ public final class RequireNumberBigInteger
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * 
      * @return                          the given value if negative
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value is not negative
      * @throws NullPointerException     if name is null
@@ -118,9 +108,7 @@ public final class RequireNumberBigInteger
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value
-     * 
      * @return                          the given value as a BigInteger, if it represents a BigInteger
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value does not represent a BigInteger
      * @throws NullPointerException     if name is null

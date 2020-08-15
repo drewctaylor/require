@@ -34,9 +34,7 @@ public final class RequireString
      * @param  string                   the given string
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length less than the given maximum
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not less than the given maximum
      * @throws IllegalArgumentException if maximum is not zero or positive
@@ -62,9 +60,7 @@ public final class RequireString
      * @param  string                   the given string
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length is less than or equal to the given maximum
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not less than or equal to the given maximum
      * @throws IllegalArgumentException if maximum is not zero or positive
@@ -89,9 +85,7 @@ public final class RequireString
      * @param  string                   the given string
      * @param  length                   the given length
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length is the given length
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not the given length
      * @throws IllegalArgumentException if length is not zero or positive
@@ -117,9 +111,7 @@ public final class RequireString
      * @param  string                   the given string
      * @param  minimum                  the given minimum
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length is greater than or equal to the given length
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not greater than or equal to the given length
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -144,9 +136,7 @@ public final class RequireString
      * @param  string                   the given string
      * @param  minimum                  the given minimum
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length is greater than the given length
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not greater than the given length
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -173,9 +163,7 @@ public final class RequireString
      * @param  minimum                  the given minimum
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length is between the given minimum and the given maximum
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -205,9 +193,7 @@ public final class RequireString
      * @param  minimum                  the given minimum
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length is between the given minimum and the given maximum
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -237,9 +223,7 @@ public final class RequireString
      * @param  minimum                  the given minimum
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length is between the given minimum and the given maximum
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -269,9 +253,7 @@ public final class RequireString
      * @param  minimum                  the given minimum
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if length is between the given minimum and the given maximum
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string length is not between the given minimum and the given maximum
      * @throws IllegalArgumentException if minimum is not zero or positive
@@ -298,9 +280,7 @@ public final class RequireString
      *
      * @param  string                   the given string
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if empty
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string is not empty
      * @throws NullPointerException     if name is null
@@ -321,9 +301,7 @@ public final class RequireString
      *
      * @param  string                   the given string
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if non-empty
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string is not empty
      * @throws NullPointerException     if name is null
@@ -344,9 +322,7 @@ public final class RequireString
      *
      * @param  string                   the given string
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if blank
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string is non-blank
      * @throws NullPointerException     if name is null
@@ -367,9 +343,7 @@ public final class RequireString
      *
      * @param  string                   the given string
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if non-blank
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string is blank
      * @throws NullPointerException     if name is null
@@ -391,9 +365,7 @@ public final class RequireString
      * @param  string                   the given string
      * @param  pattern                  the given pattern
      * @param  name                     the name of the given string
-     * 
      * @return                          the given string, if it matches the given regular expression
-     * 
      * @throws NullPointerException     if string is null
      * @throws IllegalArgumentException if string does not match the given regular expression
      * @throws NullPointerException     if pattern is null

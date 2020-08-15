@@ -1,6 +1,6 @@
 [![Workflow Maven Package](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-package/badge.svg)](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-package/badge.svg)
 [![Workflow Maven Deploy](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-deploy/badge.svg)](https://github.com/drewctaylor/${project.artifactId}/workflows/workflow-maven-deploy/badge.svg)
-[![Code Coverage](https://codecov.io/gh/drewctaylor/${project.artifactId}/branch/master/graph/badge.svg)](https://codecov.io/gh/drewctaylor/${project.artifactId})
+[![Code Coverage](https://codecov.io/gh/drewctaylor/${project.artifactId}/branch/trunk/graph/badge.svg)](https://codecov.io/gh/drewctaylor/${project.artifactId})
 
 # Require
 
@@ -79,11 +79,9 @@ Examples of the messages include:
   3: number must be greater than '4'; it is '4'.
   ```
     
-## To Use Require
+## To Use
 
-To use require:
-
-1) Update your `~/.m2/settings.xml` to include your github username or github email address and your [github personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+1) Update the `~/.m2/settings.xml` to include a github username or github email address and a [github personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 
     For example:
 
@@ -92,14 +90,14 @@ To use require:
         <servers>
             <server>
                 <id>${project.artifactId}</id>
-                <username>your-github-username-or-email-address</username>
-                <password>your-github-personal-access-token</password>
+                <username>github-username-or-email-address</username>
+                <password>github-personal-access-token</password>
             </server>
         </servers>
     </settings>
     ```
 
-2) Update your `pom.xml` to include a reference to the plugin repository.
+2) Update the `pom.xml` to include a reference to the repository.
 
     For example:
 
@@ -113,7 +111,7 @@ To use require:
     </repositories>
     ```
 
-3) Update your `pom.xml` to include the plugin. 
+3) Update the `pom.xml` to include the library. 
 
     For example:
     

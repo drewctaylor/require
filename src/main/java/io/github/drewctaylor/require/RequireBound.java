@@ -23,9 +23,7 @@ public final class RequireBound
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if less than the given maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not less than the given maximum
      * @throws NullPointerException     if maximum is null
@@ -51,9 +49,7 @@ public final class RequireBound
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if less than or equal to the given maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not less than or equal to the given maximum
      * @throws NullPointerException     if maximum is null
@@ -79,9 +75,7 @@ public final class RequireBound
      * @param  target                   the given target
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if the given target
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not the given target
      * @throws IllegalArgumentException if not zero or positive
@@ -107,9 +101,7 @@ public final class RequireBound
      * @param  minimum                  the given minimum
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if greater than or equal to the given minimum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not greater than or equal to the given minimum
      * @throws NullPointerException     if minimum is null
@@ -135,9 +127,7 @@ public final class RequireBound
      * @param  minimum                  the given minimum
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if greater than the given minimum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not greater than the given minimum
      * @throws NullPointerException     if minimum is null
@@ -165,9 +155,7 @@ public final class RequireBound
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if between the given minimum and the given maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not between the given minimum and the given maximum
      * @throws NullPointerException     if minimum is null
@@ -198,9 +186,7 @@ public final class RequireBound
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if between the given minimum and the given maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not between the given minimum and the given maximum
      * @throws NullPointerException     if minimum is null
@@ -231,9 +217,7 @@ public final class RequireBound
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if between the given minimum and the given maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not between the given minimum and the given maximum
      * @throws NullPointerException     if minimum is null
@@ -264,9 +248,7 @@ public final class RequireBound
      * @param  maximum                  the given maximum
      * @param  name                     the name of the given value
      * @param  <TYPE>                   the type of the given value
-     * 
      * @return                          the given value, if between the given minimum and the given maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not between the given minimum and the given maximum
      * @throws NullPointerException     if minimum is null
@@ -299,9 +281,7 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value less than the given maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not less than the given maximum
      * @throws NullPointerException     if maximum is null
@@ -335,9 +315,7 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value is less than or equal to the given maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not less than or equal to the given maximum
      * @throws NullPointerException     if maximum is null
@@ -370,9 +348,7 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value is the given target
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not the given target
      * @throws IllegalArgumentException if not zero or positive
@@ -406,10 +382,8 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value is greater than or equal to the given
      *                                  minimum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not greater than or equal to the given minimum
      * @throws NullPointerException     if minimum is null
@@ -443,9 +417,7 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value is greater than the given minimum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not greater than the given minimum
      * @throws NullPointerException     if minimum is null
@@ -480,10 +452,8 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value is between the given minimum and the given
      *                                  maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not between the given minimum and the given maximum
      * @throws NullPointerException     if minimum is null
@@ -521,10 +491,8 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value is between the given minimum and the given
      *                                  maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not between the given minimum and the given maximum
      * @throws NullPointerException     if minimum is null
@@ -562,10 +530,8 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value is between the given minimum and the given
      *                                  maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not between the given minimum and the given maximum
      * @throws NullPointerException     if minimum is null
@@ -603,10 +569,8 @@ public final class RequireBound
      * @param  fieldName                the name of the derivative value
      * @param  <T1>                     the type of the given value
      * @param  <T2>                     the type of the derivative value
-     * 
      * @return                          the given value, if the derivative value is between the given minimum and the given
      *                                  maximum
-     * 
      * @throws NullPointerException     if value is null
      * @throws IllegalArgumentException if value not between the given minimum and the given maximum
      * @throws NullPointerException     if minimum is null
