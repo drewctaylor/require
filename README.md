@@ -1,4 +1,3 @@
-[![Workflow Maven Package](https://github.com/drewctaylor/require/workflows/workflow-maven-package/badge.svg)](https://github.com/drewctaylor/require/workflows/workflow-maven-package/badge.svg)
 [![Workflow Maven Deploy](https://github.com/drewctaylor/require/workflows/workflow-maven-deploy/badge.svg)](https://github.com/drewctaylor/require/workflows/workflow-maven-deploy/badge.svg)
 [![Code Coverage](https://codecov.io/gh/drewctaylor/require/branch/trunk/graph/badge.svg)](https://codecov.io/gh/drewctaylor/require)
 
@@ -81,37 +80,36 @@ Examples of the messages include:
     
 ## To Use
 
-1) Update the `~/.m2/settings.xml` to include a github username or github email address and a [github personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+1) Update the `pom.xml` to include a reference to the sonatype staging and snapshot repositories.
 
-    For example:
-
-    ```xml
-    <settings>
-        <servers>
-            <server>
-                <id>require</id>
-                <username>github-username-or-email-address</username>
-                <password>github-personal-access-token</password>
-            </server>
-        </servers>
-    </settings>
-    ```
-
-2) Update the `pom.xml` to include a reference to the repository.
-
-    For example:
+   For example:
 
     ```xml
     <repositories>
         <repository>
-            <id>require</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/drewctaylor/require</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>ossrh-snapshot</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
     </repositories>
     ```
 
-3) Update the `pom.xml` to include the library. 
+2) Update the `pom.xml` to include the library. 
 
     For example:
     
@@ -120,7 +118,7 @@ Examples of the messages include:
         <dependency>
             <groupId>io.github.drewctaylor</groupId>
             <artifactId>require</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
     ```
