@@ -9,7 +9,7 @@ public final class RequireNumberShort
     {
     }
 
-    private static final RequireNumberHelper<Short> requireNumberHelper = new RequireNumberHelper<>((short) 0, Short::parseShort, "java.lang.Short");
+    private static final RequireNumberHelper<Short> requireNumberHelper = new RequireNumberHelper<>((short) 0, Short::parseShort, Short.class);
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.

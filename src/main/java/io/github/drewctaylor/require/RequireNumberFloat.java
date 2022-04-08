@@ -9,7 +9,7 @@ public final class RequireNumberFloat
     {
     }
 
-    private static final RequireNumberHelper<Float> requireNumberHelper = new RequireNumberHelper<>(0.0f, Float::parseFloat, "java.lang.Float");
+    private static final RequireNumberHelper<Float> requireNumberHelper = new RequireNumberHelper<>(0.0f, Float::parseFloat, Float.class);
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.

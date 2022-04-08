@@ -1,7 +1,7 @@
 package io.github.drewctaylor.require;
 
 /**
- * Require that a Integer is positive, zero, or negative; require that a string represent a Integer.
+ * Require that an Integer is positive, zero, or negative; require that a string represent an Integer.
  */
 public final class RequireNumberInteger
 {
@@ -9,7 +9,7 @@ public final class RequireNumberInteger
     {
     }
 
-    private static final RequireNumberHelper<Integer> requireNumberHelper = new RequireNumberHelper<>(0, Integer::parseInt, "java.lang.Integer");
+    private static final RequireNumberHelper<Integer> requireNumberHelper = new RequireNumberHelper<>(0, Integer::parseInt, Integer.class);
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.
@@ -112,7 +112,7 @@ public final class RequireNumberInteger
     }
 
     /**
-     * Return the given value as a Integer, if it represents a Integer; otherwise, throw an IllegalArgumentException.
+     * Return the given value as an Integer, if it represents an Integer; otherwise, throw an IllegalArgumentException.
      *
      * @param  value                    the given value
      * @param  name                     the name of the given value

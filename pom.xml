@@ -5,18 +5,49 @@
     <parent>
         <groupId>io.github.drewctaylor</groupId>
         <artifactId>maven</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2</version>
     </parent>
 
     <artifactId>require</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Ensure that arguments to a method satisfy requirements.</description>
+    <url>https://github.com/drewctaylor/require</url>
+    <inceptionYear>2020</inceptionYear>
+    <organization>
+        <name>Drew Taylor</name>
+        <url>https://github.com/drewctaylor</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Drew Taylor</name>
+            <email>3899848+drewctaylor@users.noreply.github.com</email>
+            <organization>Drew Taylor</organization>
+            <organizationUrl>https://github.com/drewctaylor</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>https://github.com/drewctaylor/require</connection>
+        <developerConnection>https://github.com/drewctaylor/require</developerConnection>
+        <url>https://github.com/drewctaylor/require</url>
+    </scm>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.8.0-M1</version>
+            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -11,16 +11,16 @@ final class RequireNumberHelper<TYPE extends Comparable<TYPE>>
 {
     private final TYPE zero;
     private final Function<String, TYPE> parse;
-    private final String typeName;
+    private final Class<TYPE> type;
 
     RequireNumberHelper(
             final TYPE zero,
             final Function<String, TYPE> parse,
-            final String typeName)
+            final Class<TYPE> type)
     {
         this.zero = zero;
         this.parse = parse;
-        this.typeName = typeName;
+        this.type = type;
     }
 
     TYPE requirePositive(
@@ -86,7 +86,7 @@ final class RequireNumberHelper<TYPE extends Comparable<TYPE>>
         }
         catch (final RuntimeException runtimeException)
         {
-            throw new IllegalArgumentException(format("%s must be a %s; it is '%s'.", name, typeName, value), runtimeException);
+            throw new IllegalArgumentException(format("%s must be a %s; it is '%s'.", name, type.getCanonicalName(), value), runtimeException);
         }
     }
 }

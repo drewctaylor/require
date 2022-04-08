@@ -11,7 +11,7 @@ public final class RequireNumberBigInteger
     {
     }
 
-    private static final RequireNumberHelper<BigInteger> requireNumberHelper = new RequireNumberHelper<>(BigInteger.ZERO, BigInteger::new, "java.math.BigInteger");
+    private static final RequireNumberHelper<BigInteger> requireNumberHelper = new RequireNumberHelper<>(BigInteger.ZERO, BigInteger::new, BigInteger.class);
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.

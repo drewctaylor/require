@@ -2,6 +2,7 @@ package io.github.drewctaylor.require.test;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -36,8 +37,8 @@ final class RequireMapTest
     @Test
     void testRequireEmpty()
     {
-        final var valueInvalid = singletonMap(new Object(), new Object());
-        final var valueValid = emptyMap();
+        final Map<Object, Object> valueInvalid = singletonMap(new Object(), new Object());
+        final Map<Object, Object> valueValid = emptyMap();
 
         assertThrows(NullPointerException.class, () -> requireEmpty(valueValid, null));
         assertThrows(IllegalArgumentException.class, () -> requireEmpty(valueValid, ""));
@@ -49,7 +50,7 @@ final class RequireMapTest
     @Test
     void testRequireNonEmpty()
     {
-        final var valid = singletonMap(new Object(), new Object());
+        final Map<Object, Object> valid = singletonMap(new Object(), new Object());
 
         assertThrows(NullPointerException.class, () -> requireNonEmpty(valid, null));
         assertThrows(IllegalArgumentException.class, () -> requireNonEmpty(valid, ""));
@@ -116,7 +117,10 @@ final class RequireMapTest
             throw new IllegalArgumentException("");
         };
 
-        final var map = Map.of(-1, "b", 0, "c", 1, "d");
+        final Map<Integer, String> map = new HashMap<>();
+        map.put(-1, "b");
+        map.put(0, "c");
+        map.put(1, "d");
 
         assertThrows(NullPointerException.class, () -> requireForAllKey(emptyMap(), failure, null));
         assertThrows(IllegalArgumentException.class, () -> requireForAllKey(emptyMap(), failure, ""));

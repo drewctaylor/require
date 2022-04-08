@@ -9,7 +9,7 @@ public final class RequireNumberByte
     {
     }
 
-    private static final RequireNumberHelper<Byte> requireNumberHelper = new RequireNumberHelper<>((byte) 0, Byte::parseByte, "java.lang.Byte");
+    private static final RequireNumberHelper<Byte> requireNumberHelper = new RequireNumberHelper<>((byte) 0, Byte::parseByte, Byte.class);
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.

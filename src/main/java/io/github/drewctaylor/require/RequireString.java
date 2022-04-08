@@ -359,7 +359,7 @@ public final class RequireString
         requireNonNull(string, "string");
         requireName(name);
 
-        return require(string.isBlank(), string, format("%s must be blank; it is '%s'.", name, string));
+        return require(string.chars().allMatch(Character::isWhitespace), string, format("%s must be blank; it is '%s'.", name, string));
     }
 
     /**
