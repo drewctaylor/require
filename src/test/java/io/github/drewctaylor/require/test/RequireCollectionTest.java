@@ -20,6 +20,7 @@ import static io.github.drewctaylor.require.RequireCollection.requireSizeMinimum
 import static io.github.drewctaylor.require.RequireCollection.requireSizeMinimumInclusiveMaximumExclusive;
 import static io.github.drewctaylor.require.RequireCollection.requireThereExists;
 import static java.lang.Integer.valueOf;
+import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static java.util.function.Function.identity;
@@ -48,7 +49,7 @@ final class RequireCollectionTest
     @Test
     void testRequireNonEmpty()
     {
-        final var valid = singletonList(new Object());
+        final List<Object> valid = singletonList(new Object());
 
         assertThrows(NullPointerException.class, () -> requireNonEmpty(emptyList(), null));
         assertThrows(IllegalArgumentException.class, () -> requireNonEmpty(emptyList(), ""));
@@ -117,7 +118,7 @@ final class RequireCollectionTest
             throw new IllegalArgumentException("");
         };
 
-        final var list = List.of(-1, 0, 1);
+        final List<Integer> list = asList(-1, 0, 1);
 
         assertThrows(NullPointerException.class, () -> requireForAll(emptyList(), failure, null));
         assertThrows(IllegalArgumentException.class, () -> requireForAll(emptyList(), failure, ""));

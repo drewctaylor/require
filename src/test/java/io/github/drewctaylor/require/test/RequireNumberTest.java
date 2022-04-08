@@ -92,7 +92,6 @@ final class RequireNumberTest
         nonNumericStringList.stream().forEach(nonNumericString -> assertThrows(IllegalArgumentException.class, () -> require.apply(nonNumericString, "name")));
     }
 
-    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireBigDecimal()
     {
@@ -110,7 +109,6 @@ final class RequireNumberTest
                 RequireNumberBigDecimal::requireBigDecimal);
     }
 
-    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireBigInteger()
     {
@@ -128,7 +126,6 @@ final class RequireNumberTest
                 RequireNumberBigInteger::requireBigInteger);
     }
 
-    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireByte()
     {
@@ -146,7 +143,6 @@ final class RequireNumberTest
                 RequireNumberByte::requireByte);
     }
 
-    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireDouble()
     {
@@ -164,7 +160,6 @@ final class RequireNumberTest
                 RequireNumberDouble::requireDouble);
     }
 
-    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireFloat()
     {
@@ -182,7 +177,6 @@ final class RequireNumberTest
                 RequireNumberFloat::requireFloat);
     }
 
-    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireInt()
     {
@@ -200,7 +194,6 @@ final class RequireNumberTest
                 RequireNumberInteger::requireInteger);
     }
 
-    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireLong()
     {
@@ -218,7 +211,6 @@ final class RequireNumberTest
                 RequireNumberLong::requireLong);
     }
 
-    @SuppressWarnings("NumericCastThatLosesPrecision")
     @Test
     void testRequireShort()
     {

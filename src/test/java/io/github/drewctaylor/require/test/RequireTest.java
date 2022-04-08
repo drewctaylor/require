@@ -39,7 +39,7 @@ final class RequireTest
     void testRequireNonNull()
     {
         final Object invalid = null;
-        final var valid = new Object();
+        final Object valid = new Object();
 
         assertThrows(NullPointerException.class, () -> requireNonNull(valid, null));
         assertThrows(IllegalArgumentException.class, () -> requireNonNull(valid, ""));
@@ -52,7 +52,7 @@ final class RequireTest
     @Test
     void testRequireNull()
     {
-        final var invalid = new Object();
+        final Object invalid = new Object();
         final Object valid = null;
 
         assertThrows(NullPointerException.class, () -> requireNonNull(valid, null));

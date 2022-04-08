@@ -2,7 +2,6 @@ package io.github.drewctaylor.require;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -25,8 +24,8 @@ import static io.github.drewctaylor.require.RequireBound.requireLessThanOrEqual;
 import static io.github.drewctaylor.require.RequireNumberInteger.requireZeroOrPositive;
 import static java.lang.String.format;
 import static java.lang.System.lineSeparator;
+import static java.util.AbstractMap.SimpleImmutableEntry;
 import static java.util.Map.Entry;
-import static java.util.Map.entry;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static java.util.Spliterator.ORDERED;
@@ -383,7 +382,7 @@ public final class RequireCollection
             final Stream<T2> stream2,
             final BiFunction<T1, T2, T3> biFunction)
     {
-        return stream(spliteratorUnknownSize(new Iterator<>()
+        return stream(spliteratorUnknownSize(new Iterator<T3>()
         {
             private final Iterator<T1> iterator1 = stream1.sequential().iterator();
             private final Iterator<T2> iterator2 = stream2.sequential().iterator();
@@ -406,7 +405,7 @@ public final class RequireCollection
             final COLLECTION collection,
             final Function<TYPE, TYPE> require)
     {
-        return zip(iterate(0, i -> i + 1), collection.stream(), Map::entry).map(entry ->
+        return zip(iterate(0, i -> i + 1), collection.stream(), SimpleImmutableEntry::new).map(entry ->
         {
             try
             {
@@ -415,7 +414,7 @@ public final class RequireCollection
             }
             catch (final RuntimeException runtimeException)
             {
-                return of(entry(entry.getKey(), runtimeException));
+                return of(new SimpleImmutableEntry<>(entry.getKey(), runtimeException));
             }
         });
     }

@@ -11,7 +11,7 @@ public final class RequireNumberBigDecimal
     {
     }
 
-    private static final RequireNumberHelper<BigDecimal> requireNumberHelper = new RequireNumberHelper<>(BigDecimal.ZERO, BigDecimal::new, "java.math.BigDecimal");
+    private static final RequireNumberHelper<BigDecimal> requireNumberHelper = new RequireNumberHelper<>(BigDecimal.ZERO, BigDecimal::new, BigDecimal.class);
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.

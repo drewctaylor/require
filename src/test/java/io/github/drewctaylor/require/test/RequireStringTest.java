@@ -3,6 +3,7 @@ package io.github.drewctaylor.require.test;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static io.github.drewctaylor.require.RequireString.requireBlank;
 import static io.github.drewctaylor.require.RequireString.requireEmpty;
@@ -18,6 +19,7 @@ import static io.github.drewctaylor.require.RequireString.requireMatch;
 import static io.github.drewctaylor.require.RequireString.requireNonBlank;
 import static io.github.drewctaylor.require.RequireString.requireNonEmpty;
 import static java.lang.Integer.valueOf;
+import static java.util.Arrays.asList;
 import static java.util.regex.Pattern.compile;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
@@ -29,8 +31,8 @@ final class RequireStringTest
     @Test
     void testRequireEmpty()
     {
-        final var invalid = "a";
-        final var valid = "";
+        final String invalid = "a";
+        final String valid = "";
 
         assertThrows(NullPointerException.class, () -> requireEmpty(valid, null));
         assertThrows(IllegalArgumentException.class, () -> requireEmpty(valid, ""));
@@ -43,8 +45,8 @@ final class RequireStringTest
     @Test
     void testRequireNonEmpty()
     {
-        final var invalid = "";
-        final var valid = "a";
+        final String invalid = "";
+        final String valid = "a";
 
         assertThrows(NullPointerException.class, () -> requireNonEmpty(valid, null));
         assertThrows(IllegalArgumentException.class, () -> requireNonEmpty(valid, ""));
@@ -57,8 +59,8 @@ final class RequireStringTest
     @Test
     void testRequireBlank()
     {
-        final var invalid = "a";
-        final var valid = " ";
+        final String invalid = "a";
+        final String valid = " ";
 
         assertThrows(NullPointerException.class, () -> requireBlank(valid, null));
         assertThrows(IllegalArgumentException.class, () -> requireBlank(valid, ""));
@@ -71,8 +73,8 @@ final class RequireStringTest
     @Test
     void testRequireNonBlank()
     {
-        final var invalid = " ";
-        final var valid = "a";
+        final String invalid = " ";
+        final String valid = "a";
 
         assertThrows(NullPointerException.class, () -> requireNonBlank(valid, null));
         assertThrows(IllegalArgumentException.class, () -> requireNonBlank(valid, ""));
@@ -85,9 +87,9 @@ final class RequireStringTest
     @Test
     void testRequireMatch()
     {
-        final var listForInvalid = List.of("", "aaaa", "b", "bb", "bbb");
-        final var listForValid = List.of("a", "aa", "aaa");
-        final var pattern = compile("a{1,3}");
+        final List<String> listForInvalid = asList("", "aaaa", "b", "bb", "bbb");
+        final List<String> listForValid = asList("a", "aa", "aaa");
+        final Pattern pattern = compile("a{1,3}");
 
         listForValid.forEach(valid -> assertThrows(NullPointerException.class, () -> requireMatch(valid, pattern, null)));
         listForValid.forEach(valid -> assertThrows(IllegalArgumentException.class, () -> requireMatch(valid, pattern, "")));

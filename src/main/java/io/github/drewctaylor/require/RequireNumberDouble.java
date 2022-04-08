@@ -9,7 +9,7 @@ public final class RequireNumberDouble
     {
     }
 
-    private static final RequireNumberHelper<Double> requireNumberHelper = new RequireNumberHelper<>(0.0d, Double::parseDouble, "java.lang.Double");
+    private static final RequireNumberHelper<Double> requireNumberHelper = new RequireNumberHelper<>(0.0d, Double::parseDouble, Double.class);
 
     /**
      * Return the given value, if positive; otherwise, throw an IllegalArgumentException.

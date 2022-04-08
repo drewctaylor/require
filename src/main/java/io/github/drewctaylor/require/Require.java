@@ -35,7 +35,7 @@ public final class Require
             final String string,
             final String name)
     {
-        return require(!string.isBlank(), string, new IllegalArgumentException(format("%s must be non-blank; it is '%s'.", name, string)));
+        return require(!string.chars().allMatch(Character::isWhitespace), string, new IllegalArgumentException(format("%s must be non-blank; it is '%s'.", name, string)));
     }
 
     static void requireName(

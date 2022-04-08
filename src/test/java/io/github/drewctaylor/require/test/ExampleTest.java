@@ -22,12 +22,11 @@ import static io.github.drewctaylor.require.RequireString.requireLengthExclusive
 import static io.github.drewctaylor.require.RequireString.requireLengthGreaterThan;
 import static io.github.drewctaylor.require.RequireString.requireMatch;
 import static io.github.drewctaylor.require.RequireString.requireNonBlank;
+import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
-import static java.util.List.of;
 
 final class ExampleTest
 {
-    @SuppressWarnings("MethodWithMultipleReturnPoints")
     private static <TYPE> String messageFor(
             final Supplier<TYPE> supplier)
     {
@@ -42,8 +41,6 @@ final class ExampleTest
         }
     }
 
-    @SuppressWarnings(
-    { "UseOfSystemOutOrSystemErr", "JUnitTestMethodWithNoAssertions" })
     @Test
     void testExample()
     {
@@ -58,10 +55,10 @@ final class ExampleTest
         System.out.printf("* if `requireGreaterThan('a', 'b', \"letter\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireGreaterThan('a', 'b', "letter")));
         System.out.printf("* if `requireBoundExclusive('d', 'a', 'c', \"letter\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireBoundExclusive('d', 'a', 'c', "letter")));
         System.out.printf("* if `requireNonEmpty(emptyList(), \"list\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireNonEmpty(emptyList(), "list")));
-        System.out.printf("* if `requireSizeGreaterThan(of(1, 2), 2, \"list\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireSizeGreaterThan(of(1, 2), 2, "list")));
-        System.out.printf("* if `requireSizeExclusive(of(1, 2), 0, 1, \"list\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireSizeExclusive(of(1, 2), 0, 1, "list")));
-        System.out.printf("* if `requireForAll(of(1, 2, 3, 4), element -> requireGreaterThan(element, 2, \"number\"), \"list\")` fails: %n%n  ```%n  %s%n  ```%n%n", messageFor(() -> requireForAll(of(1, 2, 3, 4), element -> requireGreaterThan(element, 2, "number"), "list")).replaceAll("\n", "\n  "));
-        System.out.printf("* if `requireThereExists(of(1, 2, 3, 4), element -> requireGreaterThan(element, 4, \"number\"), \"list\")` fails: %n%n  ```%n  %s%n  ```%n%n", messageFor(() -> requireThereExists(of(1, 2, 3, 4), element -> requireGreaterThan(element, 4, "number"), "list")).replaceAll("\n", "\n  "));
+        System.out.printf("* if `requireSizeGreaterThan(asList(1, 2), 2, \"list\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireSizeGreaterThan(asList(1, 2), 2, "list")));
+        System.out.printf("* if `requireSizeExclusive(asList(1, 2), 0, 1, \"list\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireSizeExclusive(asList(1, 2), 0, 1, "list")));
+        System.out.printf("* if `requireForAll(asList(1, 2, 3, 4), element -> requireGreaterThan(element, 2, \"number\"), \"list\")` fails: %n%n  ```%n  %s%n  ```%n%n", messageFor(() -> requireForAll(asList(1, 2, 3, 4), element -> requireGreaterThan(element, 2, "number"), "list")).replaceAll("\n", "\n  "));
+        System.out.printf("* if `requireThereExists(asList(1, 2, 3, 4), element -> requireGreaterThan(element, 4, \"number\"), \"list\")` fails: %n%n  ```%n  %s%n  ```%n%n", messageFor(() -> requireThereExists(asList(1, 2, 3, 4), element -> requireGreaterThan(element, 4, "number"), "list")).replaceAll("\n", "\n  "));
 
         System.out.printf("* if `requireNull(\"\", \"parameter\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireNull("", "parameter")));
         System.out.printf("* if `requireEmpty(\" \", \"string\")` fails: %n%n  `%s`%n%n", messageFor(() -> requireEmpty(" ", "string")));
